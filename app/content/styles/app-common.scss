@@ -1,0 +1,103 @@
+.fa {
+    font-family: "FontAwesome";
+ }
+
+ *{
+    // border-width: 0.5;
+    // border-color: red;
+    font-family: "Roboto", "Roboto-Regular";
+}
+
+ .d-theme{
+     background-color: #383443;
+     color: white;
+ }
+
+ .g-theme{
+    // background: linear-gradient(180deg, #04807f 0%, #86cfd3 100%);
+    background: linear-gradient(180deg, #493583 0%, #a894d8 100%);
+    color: white;
+}
+
+.l-xsm{
+    font-size: 8;
+}
+
+.l-sm{
+    font-size: 12;
+}
+
+.l-n{
+    font-size: 16;
+}
+
+.l-lg{
+    font-size: 24;
+}
+
+.l-xl{
+    font-size: 32;
+}
+
+.strong{
+    font-weight: bold;
+}
+
+.separator{
+    height: 1;
+    width: 95%;
+    margin-top: 20;
+    background-color: #a894d8;
+}
+
+TextField, TextView, DatePickerField {
+    border-bottom-width: 1;
+    border-bottom-color: #6d54a8;
+    placeholder-color: rgba(228, 228, 228, 0.508);
+    // margin-top: 10;
+}
+
+TextField:focus, TextView:focus, DatePickerField:focus {
+    border-bottom-width: 1;
+    border-bottom-color: white;
+    placeholder-color: rgba(228, 228, 228, 0.713);
+}
+
+.m-1{
+    margin: 5 0;
+}
+
+.mdctextfield {
+    ripple-color: #35ccd4;
+    elevation: 4;
+    stroke-color: #35ccd4;             // the border color when active
+    stroke-inactive-color: rgb(255, 255, 255);   // the border color when inactive
+    floating-color: #35ccd4;           // the floating placeholder color when active
+    floating-inactive-color: rgb(255, 255, 255); // the floating placeholder color when inactive
+}
+
+.btn{
+    border-radius: 5;
+    android-dynamic-elevation-offset: 5;
+    android-elevation: 10;
+}
+
+.btn-round{
+    border-radius: 100%;
+    android-dynamic-elevation-offset: 5;
+    android-elevation: 1;
+}
+
+.btn-success{
+    background-color: rgb(16, 137, 218);
+}
+
+.btn-light{
+    background-color: rgb(255, 255, 255);
+    color: #6d54a8;
+}
+
+.btn:focus{
+    background-color: #6d54a8;
+    color: rgb(255, 255, 255);
+}

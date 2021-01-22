@@ -1,0 +1,35 @@
+<Page class="g-theme" xmlns="http://www.nativescript.org/tns.xsd" 
+    xmlns:datetime="@nativescript/datetimepicker" loaded="onLoaded" actionBarHidden="true" 
+     androidStatusBarBackground="#04807f">   
+    <StackLayout class="tl-container">
+        <GridLayout class="grid-content" rows="auto, *, auto">
+            <StackLayout row="0" class="event-image" >
+                <!-- <StackLayout id="btnChoosePhoto">
+                    <Label class="fa browse" text="&#xf03e;"></Label>
+                    <Label class="l-n" text="Choose photo"></Label>
+                </StackLayout>
+                <Image id="testImg"></Image> -->
+                <Image id="wew" width="100%" height="100%" tap="onChoosePhoto"></Image>
+            </StackLayout>
+            <StackLayout class="input-fields" row="1">
+               <StackLayout class="m-1">
+                    <Label class="fa l-n" text="Place"></Label>
+                    <TextField id="txtPlace" class="fa" hint="&#xf124; Place address"></TextField>
+               </StackLayout>
+                <StackLayout class="m-1">
+                    <Label class="fa l-n" text="Description/Event"></Label>
+                    <TextView id="txtDesc" class="fa" hint="&#xf129; Description of the place you've visited"></TextView>
+                </StackLayout>
+                <StackLayout class="m-1">
+                    <Label class="fa l-n" text="Date"></Label>
+                    <datetime:DatePickerField id="txtDate" class="fa" pickerTitle="Select date" hint="&#xf271; Select date"/>
+                </StackLayout>
+                <Image id="wew1" width="100%" height="100%"></Image>
+            </StackLayout>
+            <DockLayout row="2" width="100%" stretchLastChild="false">
+                <Button width="65" height="65" dock="right" class="btn-round btn-light l-xl strong fa" 
+                text="&#xf0c7;" tap="onSaveDetails"></Button>
+            </DockLayout>
+        </GridLayout>
+    </StackLayout>
+</Page>

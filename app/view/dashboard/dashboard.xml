@@ -1,0 +1,23 @@
+<Page class="g-theme" xmlns="http://www.nativescript.org/tns.xsd" 
+    loaded="onLoaded" actionBarHidden="true" androidStatusBarBackground="#04807f">   
+    <GridLayout class="dash-content" rows="auto, auto, *">
+        <StackLayout class="head" row="0" orientation="vertical">
+            <StackLayout class="user" horizontalAlignment="right">
+                <Label text="&#xf007;" class="fa"></Label>      
+            </StackLayout>
+            <StackLayout horizontalAlignment="left">
+                <Label text="Hey," class="l-n"></Label>
+                <Label id="txtUser" text="User" class="l-lg"></Label>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout row="1" class="separator"></StackLayout>
+        <StackLayout row="2">
+            <StackLayout class="no-data" tap="AddTravelDetails">
+                <StackLayout>
+                    <Label text="&#xf067;" class="fa l-xl"></Label>
+                    <Label text="No Travel details added." class="fa l-n"></Label>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </GridLayout>
+</Page>
