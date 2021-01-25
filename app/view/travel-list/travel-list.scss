@@ -11,7 +11,7 @@
 }
 
 .event-image{
-    height: 35%;
+    height: 40%;
     text-align: center;
     vertical-align: middle;
     background-color: white;
@@ -23,4 +23,13 @@
 
 #btnChoosePhoto{
     color: #493583;
+}
+
+.imgClose{
+    color: #a894d8;
+    font-size: 25;
+    width: 50;
+    height: 50;
+    background-color: transparent;
+    android-elevation: 0;
 }

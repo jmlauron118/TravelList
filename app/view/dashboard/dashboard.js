@@ -5,6 +5,7 @@ exports.onLoaded = ((args) =>{
     const page = args.object;
 
     page.bindingContext = new DashboardModel();
+    page.bindingContext.GetTravelDetails();
 });
 
 exports.AddTravelDetails = ((args) =>{

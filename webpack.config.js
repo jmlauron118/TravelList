@@ -249,6 +249,10 @@ module.exports = env => {
                 { from: { glob: 'fonts/**', dot: false } },
                 { from: { glob: '**/*.jpg', dot: false } },
                 { from: { glob: '**/*.png', dot: false } },
+                { from: { glob: '**/*.gif', dot: false } },
+                { from: { glob: '**/*.sqlite', dot: false } },
+                { from: { glob: '**/*.db', dot: false } },
+                { from: { glob: '**/*.sql', dot: false } },
             ], copyIgnore),
             new nsWebpack.GenerateNativeScriptEntryPointsPlugin("bundle"),
 
