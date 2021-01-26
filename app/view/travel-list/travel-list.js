@@ -100,9 +100,11 @@ exports.ClearFields = ((page) =>{
     let txtPlace = page.getViewById("txtPlace");
     let txtDesc = page.getViewById("txtDesc");
     let txtDate = page.getViewById("txtDate");
+    let btnRemoveImage = page.getViewById("btnRemoveImage");
 
     txtPlace.text = "";
     txtDesc.text = "";
     txtDate.text = "";
+    btnRemoveImage.notify({eventName: "tap", object: btnRemoveImage});
 });
 

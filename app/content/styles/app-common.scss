@@ -2,6 +2,21 @@
     font-family: "FontAwesome";
  }
 
+ .far {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+    font-weight: 400;  
+}
+
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+    font-weight: 400; 
+}
+
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 400; 
+}
+
  *{
     // border-width: 0.5;
     // border-color: red;
@@ -100,4 +115,51 @@ TextField:focus, TextView:focus, DatePickerField:focus {
 .btn:focus{
     background-color: #6d54a8;
     color: rgb(255, 255, 255);
+}
+
+.btn-transparent{
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.c-dark{
+    color: #6d54a8;
+}
+
+.c-light{
+    color: #cdb9fd;
+}
+
+.c-white{
+    color: white;
+}
+
+Label.n {
+    font-style: normal;
+}
+
+Label.i {
+    font-style: italic;
+}
+
+Label.o {
+    font-style: oblique;
+}
+
+.ow {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
 }

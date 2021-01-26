@@ -3,6 +3,7 @@ const keyboard = Utils.getInputMethodManager();
 const fs = require("file-system");
 const ImageSourceModule = require("image-source");
 
+
 exports.ShowSoftInput = function (element) {
     setTimeout(() => {
         element.android.requestFocus();
@@ -20,6 +21,7 @@ exports.SaveImage = (async (selection, filename) =>{
             
             source.fromAsset(selected).then((res) =>{  
                 let saved = res.saveToFile(path, "png");
+                console.log(path);
 
                 if(saved){
                     resolve(path);
@@ -30,6 +32,24 @@ exports.SaveImage = (async (selection, filename) =>{
             });
         }); 
     });
+});
+
+exports.RemoveImgFile = ((url) =>{
+    try{
+        let appPath = fs.knownFolders.documents();
+        let splitUrl = url.split("/");
+        let imgFile = splitUrl[splitUrl.length -1];
+        let file = appPath.getFile(imgFile);
+
+        if(imgFile != "no-image.png"){
+            file.remove().then((res) =>{
+                console.log("Image removed!");
+            });
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
 });
 
 exports.hasNull = function (obj) {
