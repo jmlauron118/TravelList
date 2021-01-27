@@ -17,7 +17,6 @@ function TravelListModel(){
 
                 resolve({ Status: 1, Message: "Travel details successfully saved."});
             }).catch((err) => {
-                // ShowMessage("Error", "An unexpected error encountered while processing your request.", "error");
                 resolve({ Status: 2, Message: `An unexpected error encountered while processing your request. (${err})` });
             });
         });

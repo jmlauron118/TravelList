@@ -19,6 +19,11 @@ exports.onNavigatedTo = ((args) =>{
         page.getViewById("txtDesc").text = context.currData.DESCRIPTION;
         page.getViewById("placeImg").src = context.currData.PLACE_IMG;
         page.getViewById("txtDate").text = context.currData.DATE;
+
+        if(!page.getViewById("placeImg").src.includes("no-image.png")){
+            global.hasImage = 1;
+            page.bindingContext.ImageToggle();
+        }
     }
 });
 
@@ -76,7 +81,7 @@ exports.onSaveDetails = ((args) =>{
                     if(page.bindingContext.get("isUpdate") == "update"){
                         var img = page.bindingContext.get("currData").PLACE_IMG;
 
-                        if(img != page.getViewById("placeImg").src){
+                        if(!img.includes("no-image.png")){
                             General.RemoveImgFile(page.bindingContext.get("currData").PLACE_IMG);
                             img = page.getViewById("placeImg").src;
                         }
@@ -101,6 +106,14 @@ exports.onSaveDetails = ((args) =>{
         }   
         else{
             var date = Moment(txtDate.text, "MMM DD, YYYY").format("YYYY-MM-DD");
+
+            if(page.bindingContext.get("isUpdate") == "update"){
+                var img = page.bindingContext.get("currData").PLACE_IMG;
+
+                if(!img.includes("no-image.png")){
+                    General.RemoveImgFile(page.bindingContext.get("currData").PLACE_IMG);
+                }
+            }
 
             General.SaveImage(global.imgAsset, txtPlace.text+"-"+date).then((response) =>{
                 travelObj[travelObj.length] = response;

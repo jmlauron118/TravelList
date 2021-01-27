@@ -21,7 +21,6 @@ exports.SaveImage = (async (selection, filename) =>{
             
             source.fromAsset(selected).then((res) =>{  
                 let saved = res.saveToFile(path, "png");
-                console.log(path);
 
                 if(saved){
                     resolve(path);
@@ -48,7 +47,7 @@ exports.RemoveImgFile = ((url) =>{
         }
     }
     catch(err){
-        console.log(err);
+        console.log(`RemoveImgFile error: ${err}`);
     }
 });
 
