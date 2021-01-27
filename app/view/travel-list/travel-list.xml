@@ -1,5 +1,5 @@
 <Page class="g-theme" xmlns="http://www.nativescript.org/tns.xsd" 
-    xmlns:datetime="@nativescript/datetimepicker" loaded="onLoaded" actionBarHidden="true" 
+    xmlns:datetime="@nativescript/datetimepicker" navigatedTo="onNavigatedTo" actionBarHidden="true" 
      androidStatusBarBackground="#04807f" tap="onOutsideTouch">   
     <StackLayout class="tl-container">
         <GridLayout class="grid-content" rows="auto, *, auto" touch="onOutsideTouch">
@@ -23,8 +23,8 @@
                 </StackLayout>
             </StackLayout>
             <DockLayout row="2" width="100%" stretchLastChild="false">
-                <Button width="65" height="65" dock="right" class="btn-round btn-light l-xl strong fa" 
-                text="&#xf0c7;" tap="onSaveDetails"></Button>
+                <Button width="65" height="65" dock="right" class="btn-round btn-light l-xl strong fas" 
+                text="{{ isUpdate == 'update' ? '&#xf305;' : '&#xf0c7;' }}" tap="onSaveDetails"></Button>
             </DockLayout>
         </GridLayout>
     </StackLayout>

@@ -20,6 +20,9 @@ exports.AddTravelDetails = ((args) =>{
             name: "slide",
             duration: 250,
             curve: "easeInOut"
+        },
+        context: {
+            ind: "add"
         }
     });
 });
@@ -39,7 +42,7 @@ exports.onTravelItemTap =((args) =>{
                 name: "slide",
                 duration: 250,
                 curve: "easeInOut"
-            },
+            }, 
             context: {
                 travelId: elem.travelHeadId
             }

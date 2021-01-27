@@ -40,9 +40,27 @@ exports.onRemoveTravelDetails = ((args) =>{
                 else{
                     ShowMessage("Warning!", response.Message, "warning");
                 }
-
-                page.bindingContext.set("isLongPressed", 0);
             });
+        }
+    });
+});
+
+exports.onUpdateTravelDetails = ((args) =>{
+    const elem = args.object;
+    const page = elem.page;
+    var currData = page.bindingContext.get("travelDetails")[0];
+
+    page.frame.navigate({
+        moduleName: "view/travel-list/travel-list",
+        animated: true,
+        transition: {
+            name: "slide",
+            duration: 250,
+            curve: "easeInOut"
+        },
+        context: {
+            currData: currData,
+            ind: "update"
         }
     });
 });

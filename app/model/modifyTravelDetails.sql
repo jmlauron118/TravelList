@@ -1,0 +1,10 @@
+UPDATE
+    TRAVEL_DETAILS
+SET
+    PLACE = ?,
+    DESCRIPTION = ?,
+    DATE = ?,
+    PLACE_IMG = ?
+WHERE
+    TRAVEL_ID = ?
+;

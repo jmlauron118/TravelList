@@ -6,10 +6,20 @@ const Dialog = require("tns-core-modules/ui/dialogs");
 const Moment = require("~/core/moment");
 
 
-exports.onLoaded = ((args) =>{
+exports.onNavigatedTo = ((args) =>{
     const page = args.object;
+    const context = args.context;
 
     page.bindingContext = new TravelListModel();
+    page.bindingContext.set("isUpdate", context.ind);
+
+    if(context.ind == "update"){
+        page.bindingContext.set("currData", context.currData);
+        page.getViewById("txtPlace").text = context.currData.PLACE;
+        page.getViewById("txtDesc").text = context.currData.DESCRIPTION;
+        page.getViewById("placeImg").src = context.currData.PLACE_IMG;
+        page.getViewById("txtDate").text = context.currData.DATE;
+    }
 });
 
 exports.onOutsideTouch = ((args) =>{
@@ -63,10 +73,29 @@ exports.onSaveDetails = ((args) =>{
                 okButtonText: "Yes"
             }).then((result) =>{
                 if(result){
-                    page.bindingContext.SaveTravelDetails(travelObj).then(() =>{
-                        ShowMessage("Success!", "Travel details successfully saved.", "success");
-                        this.ClearFields(page);
-                    });
+                    if(page.bindingContext.get("isUpdate") == "update"){
+                        var img = page.bindingContext.get("currData").PLACE_IMG;
+
+                        if(img != page.getViewById("placeImg").src){
+                            General.RemoveImgFile(page.bindingContext.get("currData").PLACE_IMG);
+                            img = page.getViewById("placeImg").src;
+                        }
+
+                        travelObj[travelObj.length] = img;
+                        travelObj[travelObj.length] = page.bindingContext.get("currData").TRAVEL_ID;
+                        
+                        page.bindingContext.ModifyTravelDetails(travelObj).then((response) =>{
+                            ShowMessage("Success!", response.Message, "success");
+                            this.ClearFields(page);
+                            page.frame.goBack();
+                        });
+                    }
+                    else{
+                        page.bindingContext.SaveTravelDetails(travelObj).then((response) =>{
+                            ShowMessage("Success!", response.Message, "success");
+                            this.ClearFields(page);
+                        });
+                    }
                 }
             });
         }   
@@ -76,10 +105,26 @@ exports.onSaveDetails = ((args) =>{
             General.SaveImage(global.imgAsset, txtPlace.text+"-"+date).then((response) =>{
                 travelObj[travelObj.length] = response;
 
-                page.bindingContext.SaveTravelDetails(travelObj).then(() =>{
-                    ShowMessage("Success!", "Travel details successfully saved.", "success");
-                    this.ClearFields(page);
-                });
+                if(page.bindingContext.get("isUpdate") == "update"){
+                    travelObj[travelObj.length] = page.bindingContext.get("currData").TRAVEL_ID;
+                    
+                    page.bindingContext.ModifyTravelDetails(travelObj).then((response) =>{
+                        ShowMessage("Success!", response.Message, "success");
+                        this.ClearFields(page);
+                        page.frame.goBack();
+                    });
+                }
+                else{
+                    page.bindingContext.SaveTravelDetails(travelObj).then((response) =>{
+                        if(response.Status == 1){
+                            ShowMessage("Success!", response.message, "success");
+                            this.ClearFields(page);
+                        }
+                        else{
+                            ShowMessage("Error", response.message, "error");
+                        }
+                    });
+                }
             }).catch((err) =>{
                 ShowMessage("Warning!", err, "warning");
             });

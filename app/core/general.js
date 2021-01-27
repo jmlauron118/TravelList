@@ -61,3 +61,7 @@ exports.hasNull = function (obj) {
 
     return false;
 }
+
+exports.SetTransparentPageBg = (() =>{
+    page._dialogFragment.getDialog().getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+});
