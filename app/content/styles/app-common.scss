@@ -46,6 +46,10 @@
     font-size: 16;
 }
 
+.l-m{
+    font-size: 19;
+}
+
 .l-lg{
     font-size: 24;
 }
@@ -139,11 +143,15 @@ TextField:focus, TextView:focus, DatePickerField:focus {
 }
 
 .c-light{
-    color: #cdb9fd;
+    color: #dbccff;
 }
 
 .c-white{
     color: white;
+}
+
+.c-default{
+    color:rgb(133, 133, 133)
 }
 
 Label.n {

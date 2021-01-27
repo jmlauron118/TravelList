@@ -1,0 +1,21 @@
+<Page class="g-theme" xmlns="http://www.nativescript.org/tns.xsd"
+    navigatedTo="onNavigatedTo" actionBarHidden="true" androidStatusBarBackground="#04807f">
+    <GridLayout rows="*, auto">
+       <GridLayout row="0" rows="auto, *, auto" class="travel-detail-container">
+            <Image row="0" class="travel-image" src="{{ travelDetails[0].PLACE_IMG }}"></Image>
+            <ScrollView row="1">
+                <StackLayout class="travel-info">
+                    <Label class="l-lg fas c-dark" textWrap="true" text="{{ '&#xf3c5; '+ travelDetails[0].PLACE }}"></Label>
+                    <Label class="l-m c-default" textWrap="true" text="{{ travelDetails[0].DESCRIPTION }}"></Label>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout row="2" class="td-date">
+                 <Label class="l-m c-dark text-center strong fa" text="{{ '&#xf271; '+ travelDetails[0].DATE }}"></Label>
+            </StackLayout>
+       </GridLayout>  
+       <StackLayout row="1" orientation="horizontal" horizontalAlignment="center" class="td-buttons"> 
+            <Label tap="onUpdateTravelDetails" class="fas l-xl text-center" text="&#xf305;"></Label>
+            <Label tap="onRemoveTravelDetails" class="fas l-xl text-center" text="&#xf2ed;"></Label>   
+       </StackLayout>
+    </GridLayout>
+</Page>

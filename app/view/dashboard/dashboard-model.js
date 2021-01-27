@@ -47,7 +47,7 @@ function DashboardModel(){
             var deleteCount = 0;
 
             for(let id in travelIds){
-                StoredProcedure.execute("removeTravelDetails.sql", travelIds[id]).then(() =>{
+                StoredProcedure.execute("removeTravelDetailsById.sql", travelIds[id]).then(() =>{
                     deleteCount = deleteCount + 1;
                     General.RemoveImgFile(imgList[id]);
 

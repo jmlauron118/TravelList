@@ -27,11 +27,11 @@
                         <lv:ListViewGridLayout scrollDirection="Vertical" spanCount="2"/>
                     </lv:RadListView.listViewLayout>
                     <lv:RadListView.itemTemplate>
-                        <StackLayout class="list-group-item" tap="onTravelItemTap"
+                        <StackLayout class="list-group-item" tap="onTravelItemTap" travelHeadId="{{ TRAVEL_ID }}"
                             longPress="onTravelItemLongPress">
                             <GridLayout rows="auto, auto">
                                 <Image row="0" width="100%" stretch="aspectFill" src="{{ PLACE_IMG }}"></Image>
-                                <Label class="ind fas l-xl c-light" text="&#xf058;" horizontalAlignment="right" 
+                                <Label class="ind fas l-xl c-white" text="&#xf058;" horizontalAlignment="right" 
                                     visibility="collapse" travelId="{{ TRAVEL_ID }}"></Label>
                                 <StackLayout row="1" class="item-details">
                                     <Label text="{{ '&#xf3c5; '+ PLACE }}" textWrap="true" class="fas l-n strong c-dark" />
@@ -45,8 +45,8 @@
             </StackLayout>
         </GridLayout>
         <StackLayout row="1" class="long-pressed" visibility="{{ isLongPressed ? 'visible' : 'collapsed' }}" orientation="horizontal">
-            <Button text="Cancel" tap="onCancelSelected" width="50%"></Button>
-            <Button text="Delete" tap="onRemoveTravelDetails" width="50%"></Button>
+            <Button text="&#xf05e; Cancel" class="fas" tap="onCancelSelected" width="50%"></Button>
+            <Button text="&#xf2ed; Delete" class="fas" tap="onRemoveTravelDetails" width="50%"></Button>
         </StackLayout>
     </GridLayout>
 </Page>

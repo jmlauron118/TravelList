@@ -17,7 +17,7 @@ exports.AddTravelDetails = ((args) =>{
         moduleName: "view/travel-list/travel-list",
         animated: true,
         transition: {
-            name: "fade",
+            name: "slide",
             duration: 250,
             curve: "easeInOut"
         }
@@ -32,7 +32,18 @@ exports.onTravelItemTap =((args) =>{
        this.PressToggle(elem);
     }
     else{
-        console.log("Tapped!");
+        page.frame.navigate({
+            moduleName: "view/travel-details/travel-details",
+            animated: true,
+            transition:{
+                name: "slide",
+                duration: 250,
+                curve: "easeInOut"
+            },
+            context: {
+                travelId: elem.travelHeadId
+            }
+        });
     }
 });
 
@@ -43,7 +54,6 @@ exports.onTravelItemLongPress = ((args) =>{
     page.bindingContext.set("isLongPressed", 1);
     elem.getElementsByClassName("ind")[0].visibility = "visible";
     elem.getElementsByClassName("ind")[0].classList.add("selected");
-    console.log("onTravelItemLongPress");
 });
 
 exports.PressToggle = ((elem) =>{
@@ -63,7 +73,6 @@ exports.PressToggle = ((elem) =>{
         }
     }  
     else{
-        console.log("PressToggle");
         page.bindingContext.set("isLongPressed", 1);
         elem.getElementsByClassName("ind")[0].visibility = "visible";
         elem.getElementsByClassName("ind")[0].classList.add("selected");

@@ -1,0 +1,40 @@
+.travel-detail-container{
+    // background-color: #f5f0ff;
+    background-color: white;
+    margin: 50 5% 5% 5%;
+    android-elevation: 8;
+    border-radius: 5;
+
+    .travel-image{
+        border-top-left-radius: 5;
+        border-top-right-radius: 5;
+        android-elevation: 2;
+        margin-bottom: 10;
+    }
+    
+    .travel-info{
+        padding: 10% 20%;
+        android-evelation: 2;
+
+        Label{
+            margin-bottom: 10;
+        }
+    }
+
+    .td-date{
+        background-color: #f1edfd;
+        padding: 10;
+        border-bottom-left-radius: 5;
+        border-bottom-right-radius: 5;
+    }
+}
+
+.td-buttons{
+    Label{
+        margin: 0 30 15 30;
+        android-elevation: 15;
+        android-dynamic-elevation-offset: 1;
+        background-color: rgba(255, 255, 255, 0);
+    }
+}
+
