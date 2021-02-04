@@ -10,28 +10,33 @@ function TravelDetailsModel(){
     var details = [];
 
     viewModel.GetTravelDetailsById = ((travelId) =>{
-        StoredProcedure.getData("getTravelDetailsById.sql", travelId).then((response) =>{
-            if(response.length > 0){
-                var defaultImg = "~/content/images/no-image.png";
-             
-                for(let row in response){
-                    details[row] = {
-                        TRAVEL_ID: response[row][0],
-                        PLACE: response[row][1],
-                        DESCRIPTION: response[row][2],
-                        PLACE_IMG: response[row][3] == null ? defaultImg : response[row][3],
-                        DATE: Moment(response[row][4], "YYYY-MM-DD").format("MMM DD, YYYY")
-                    };
+        return new Promise((resolve, reject) =>{
+            StoredProcedure.getData("getTravelDetailsById.sql", travelId).then((response) =>{
+                if(response.length > 0){
+                    var defaultImg = "~/content/images/no-image.png";
+                 
+                    for(let row in response){
+                        details[row] = {
+                            TRAVEL_ID: response[row][0],
+                            PLACE: response[row][1],
+                            DESCRIPTION: response[row][2],
+                            PLACE_IMG: response[row][3] == null ? defaultImg : response[row][3],
+                            DATE: Moment(response[row][4], "YYYY-MM-DD").format("MMM DD, YYYY")
+                        };
+                    }  
+    
+                    viewModel.set("travelDetails", details);
+                    resolve();
                 }
-
-                viewModel.set("travelDetails", details);
-            }
-            else{
-                ShowMessage("Warning!", "Data is not found", "warning");
-            }
-        }).
-        catch((err)=>{
-            ShowMessage("Warning!", err, "warning");
+                else{
+                    ShowMessage("Warning!", "Data is not found", "warning");
+                    resolve();
+                }
+            }).
+            catch((err)=>{
+                ShowMessage("Warning!", err, "warning");
+                resolve();
+            });
         });
     });
 

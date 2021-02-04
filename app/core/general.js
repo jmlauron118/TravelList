@@ -64,3 +64,18 @@ exports.hasNull = function (obj) {
 exports.SetTransparentPageBg = (() =>{
     page._dialogFragment.getDialog().getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
 });
+
+global.OpenLoading = function (args) {
+    const component = args.object;
+    const page = component.page;
+    var location = "view/shared/loading/loading";
+    var option = {
+        fullscreen: true
+    };
+
+    page.showModal(location, option);
+}
+
+global.CloseLoading = ((page) =>{
+    page.closeModal();
+});

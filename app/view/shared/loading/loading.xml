@@ -1,0 +1,10 @@
+<Page
+    class="loading"
+    xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" 
+    xmlns:Gif="nativescript-gif" shownModally="onShownModal" style="background-color: #ecf0f1;"> 
+    
+    <StackLayout orientation="vertical" verticalAlignment="center">
+       <Gif:Gif id="gifImage" height="250" src="~/content/images/loading.gif"></Gif:Gif>
+       <Label id="txtLoading" class="l-m r-r" text="Please wait" textWrap="true" style="text-align: center;"></Label>
+    </StackLayout>
+</Page>     

@@ -4,20 +4,25 @@ const Dialog = require("tns-core-modules/ui/dialogs");
 require("nativescript-dom");
 
 exports.onLoaded = ((args) =>{
-    const page = args.object;
+    const page = args.object; 
 
     page.bindingContext = new DashboardModel();
-    page.bindingContext.GetTravelDetails();
+    page.bindingContext.set("processing", true);
+    setTimeout(() =>{
+        page.bindingContext.GetTravelDetails().then(() =>{
+            page.bindingContext.set("processing", false);
+        });
+    },1500);
 });
 
 exports.AddTravelDetails = ((args) =>{
     const page = args.object.page;
-
+  
     page.frame.navigate({
         moduleName: "view/travel-list/travel-list",
         animated: true,
         transition: {
-            name: "slide",
+            name: "fade",
             duration: 250,
             curve: "easeInOut"
         },
@@ -39,7 +44,7 @@ exports.onTravelItemTap =((args) =>{
             moduleName: "view/travel-details/travel-details",
             animated: true,
             transition:{
-                name: "slide",
+                name: "fade",
                 duration: 250,
                 curve: "easeInOut"
             }, 

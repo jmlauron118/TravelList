@@ -1,7 +1,7 @@
-<Page class="g-theme" xmlns="http://www.nativescript.org/tns.xsd"
+<Page class="l-theme" xmlns="http://www.nativescript.org/tns.xsd"
     loaded="onLoaded" actionBarHidden="true" androidStatusBarBackground="#04807f"
     xmlns:lv="nativescript-ui-listview">
-    <GridLayout rows="*, auto">
+    <GridLayout rows="*, auto" style="{{ processing ? 'opacity: 0.5;' : 'opacity: 1;' }}">
         <GridLayout row="0" class="dash-content" rows="auto, auto, *, auto">
             <GridLayout class="head" row="0" rows="auto" columns="*, auto">
                 <StackLayout class="user" col="0">
@@ -15,11 +15,11 @@
             <StackLayout row="1" class="separator"></StackLayout>
             <StackLayout row="2" class="no-data" visibility="{{ noData ? 'visible' : 'collapsed' }}" tap="AddTravelDetails">
                 <Label text="&#xe07c;" class="fab l-xl strong" style="padding-bottom: 10;"></Label>
-                <Label text="No Travel details added." class="fa l-n strong" ></Label>
+                <Label text="No Travel details added." class="fa l-m r-r"></Label>
             </StackLayout>
             <StackLayout class="list-content" row="2" visibility="{{ hasData ? 'visible' : 'collapsed' }}">
                 <GridLayout columns="*, auto" rows="auto">
-                    <Label row="0" col="0" class="l-lg strong" text="Visited Places"></Label>
+                    <Label row="0" col="0" class="l-lg r-l strong" text="Visited Places"></Label>
                     <Label row="0" col="1" class="fa l-xl" width="50" height="50" text="&#xf067;" tap="AddTravelDetails"></Label>
                 </GridLayout>
                 <lv:RadListView id="radTravelList" items="{{ travelList }}" height="100%">
@@ -35,8 +35,8 @@
                                     visibility="collapse" travelId="{{ TRAVEL_ID }}"></Label>
                                 <StackLayout row="1" class="item-details">
                                     <Label text="{{ '&#xf3c5; '+ PLACE }}" textWrap="true" class="fas l-n strong c-dark" />
-                                    <Label text="{{ DESCRIPTION }}" textWrap="true" class="l-n i" />
-                                    <Label text="{{ DATE }}" textWrap="true" class="l-n i" />
+                                    <Label text="{{ DESCRIPTION }}" textWrap="true" class="l-n r-l i" />
+                                    <Label text="{{ DATE }}" textWrap="true" class="l-n r-r i" />
                                 </StackLayout>
                             </GridLayout>
                         </StackLayout>
@@ -48,5 +48,6 @@
             <Button text="&#xf05e; Cancel" class="fas" tap="onCancelSelected" width="50%"></Button>
             <Button text="&#xf2ed; Delete" class="fas" tap="onRemoveTravelDetails" width="50%"></Button>
         </StackLayout>
+        <ActivityIndicator class="loading" rowSpan="2" color="purple" busy="{{ processing }}"></ActivityIndicator>
     </GridLayout>
 </Page>

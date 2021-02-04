@@ -3,6 +3,7 @@ const ObservableArray = require("tns-core-modules/data/observable-array").Observ
 const StoredProcedure = require("~/core/storedprocedure");
 const Moment = require("~/core/moment");
 const General = require("~/core/general");
+const Loading = require("~/view/shared/loading/loading");
 
 function DashboardModel(){
     let viewModel = new Obserbable();
@@ -13,32 +14,34 @@ function DashboardModel(){
     global.imgAsset = "";
 
     viewModel.GetTravelDetails = (() =>{
-        var itemList = [];
+        return new Promise((resolve, reject) =>{
+            var itemList = [];
 
-        // viewModel.travelList.length = 0;
+            StoredProcedure.getData("getTravelDetails.sql").then((response) =>{
+                if(response.length > 0){
+                    var defaultImg = "~/content/images/no-image.png";
+                    viewModel.set("noData", 0);
+                    viewModel.set("hasData", 1); 
 
-        StoredProcedure.getData("getTravelDetails.sql").then((response) =>{
-            if(response.length > 0){
-                var defaultImg = "~/content/images/no-image.png";
-                viewModel.set("noData", 0);
-                viewModel.set("hasData", 1); 
-
-                for(let row in response){
-                    itemList[row] = {
-                        TRAVEL_ID: response[row][0],
-                        PLACE: response[row][1],
-                        DESCRIPTION: response[row][2],
-                        PLACE_IMG: response[row][3] == null ? defaultImg : response[row][3],
-                        DATE: Moment(response[row][4], "YYYY-MM-DD").format("MMM DD, YYYY")
-                    };
+                    for(let row in response){
+                        itemList[row] = {
+                            TRAVEL_ID: response[row][0],
+                            PLACE: response[row][1],
+                            DESCRIPTION: response[row][2],
+                            PLACE_IMG: response[row][3] == null ? defaultImg : response[row][3],
+                            DATE: Moment(response[row][4], "YYYY-MM-DD").format("MMM DD, YYYY")
+                        };
+                    }
+        
+                    viewModel.set("travelList", itemList);
+                    resolve();
                 }
-
-                viewModel.set("travelList", itemList);
-            }
-            else{
-                viewModel.set("noData", 1);
-                viewModel.set("hasData", 0);
-            }
+                else{
+                    viewModel.set("noData", 1);
+                    viewModel.set("hasData", 0);
+                    resolve();
+                }
+            }); 
         });
     });
 

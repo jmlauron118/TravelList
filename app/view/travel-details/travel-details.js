@@ -7,7 +7,12 @@ exports.onNavigatedTo = ((args) =>{
     let travelId = args.context.travelId;
 
     page.bindingContext = new TravelDetailsModel();
-    page.bindingContext.GetTravelDetailsById(travelId);
+    page.bindingContext.set("processing", true);
+    page.bindingContext.GetTravelDetailsById(travelId).then(() =>{
+        setTimeout(() => {
+            page.bindingContext.set("processing", false);
+        }, 500);
+    });
 });
 
 exports.onRemoveTravelDetails = ((args) =>{
@@ -54,7 +59,7 @@ exports.onUpdateTravelDetails = ((args) =>{
         moduleName: "view/travel-list/travel-list",
         animated: true,
         transition: {
-            name: "slide",
+            name: "fade",
             duration: 250,
             curve: "easeInOut"
         },

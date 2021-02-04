@@ -1,8 +1,8 @@
 .fa {
     font-family: "FontAwesome";
- }
+}
 
- .far {
+.far {
     font-family: "Font Awesome 5 Free", "fa-regular-400";
     font-weight: 400;  
 }
@@ -17,21 +17,26 @@
     font-weight: 400; 
 }
 
- *{
+*{
     // border-width: 0.5;
     // border-color: red;
-    font-family: "Roboto", "Roboto-Regular";
+    font-family: "Roboto", "Roboto-Regular", inherit !important;
 }
 
- .d-theme{
-     background-color: #383443;
-     color: white;
- }
+.d-theme{
+    background-color: #383443;
+    color: white;
+}
 
- .g-theme{
-    // background: linear-gradient(180deg, #04807f 0%, #86cfd3 100%);
+.g-theme{
     background: linear-gradient(180deg, #493583 0%, #a894d8 100%);
     color: white;
+}
+
+.l-theme{
+    background: linear-gradient(180deg, #ededed 60%, #a991f0 100%);
+    color: #493583;
+    placeholder-color: #947ae2;
 }
 
 .l-xsm{
@@ -72,9 +77,10 @@
 TextField, TextView, DatePickerField {
     border-bottom-width: 1;
     border-bottom-color: #6d54a8;
-    placeholder-color: rgba(228, 228, 228, 0.508);
+    // placeholder-color: rgba(228, 228, 228, 0.508);
+    placeholder-color: #9a86d1;
     // margin-top: 10;
-}
+} 
 
 TextField:focus, TextView:focus, DatePickerField:focus {
     border-bottom-width: 1;
@@ -166,8 +172,42 @@ Label.o {
     font-style: oblique;
 }
 
-.ow {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
+.r-r {
+    font-family: "Roboto", "Roboto-Regular", inherit !important;
+}
+
+.r-l {
+    font-family: "Roboto", "Roboto-Light", inherit !important;
+}
+
+.r-b {
+    font-family: "Roboto", "Roboto-Medium" !important;
+}
+
+.os-r {
+    font-family: "Roboto", "OpenSans-Regular" !important;
+}
+
+.os-l {
+    font-family: "Roboto", "OpenSans-Light" !important;
+}
+
+.os-b {
+    font-family: "Roboto", "OpenSans-Bold" !important;
+}
+
+.b-r {
+    font-family: "Balsamiq Sans", "BalsamiqSans-Regular", cursive !important;
+}
+
+.b-b {
+    font-family: "Balsamiq Sans", "BalsamiqSans-Bold", cursive !important;;
+}
+
+.b-i {
+    font-family: "Balsamiq Sans", "BalsamiqSans-Italic",inherit !important;;
+}
+
+.loading{
+    width: 100;
 }
